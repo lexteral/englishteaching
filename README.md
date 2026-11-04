@@ -19,11 +19,11 @@ pip install openpyxl cryptography
 DATA_KEY="<กุญแจเดิม>" python3 scripts/build_data.py path/to/scores.xlsx   # ไม่ใส่ DATA_KEY = สร้างกุญแจใหม่
 ```
 
-## Deploy บน Cloudflare Pages (รองรับ ~800 คนได้สบาย ใช้แผนฟรี)
-1. Cloudflare Dashboard → Workers & Pages → Create → Pages → Connect to Git → เลือก repo นี้
-2. Build command: *(ว่าง)* · Build output directory: `public`
-3. Settings → Variables and Secrets → เพิ่ม **Secret** ชื่อ `DATA_KEY` แล้ว Redeploy
-4. (แนะนำ) Security → WAF → Rate limiting rule: path `/api/score` จำกัด ~10 ครั้ง/นาที/IP เพื่อกันการไล่เดารหัส
+## Deploy บน Cloudflare Workers (static assets + API) — ใช้แผนฟรี รองรับ ~800 คน
+1. Cloudflare → Workers & Pages → Create application → เชื่อม Git → เลือก repo นี้ ตั้งชื่อ Worker ให้ตรงกับ `name` ใน `wrangler.toml` (`toeicresults`)
+2. Build command: *(ว่าง)* · Deploy command: `npx wrangler deploy` · Root directory: `/`
+3. Settings → Variables and secrets → เพิ่ม **Secret** ชื่อ `DATA_KEY` แล้ว Deploy ใหม่
+4. (แนะนำ) ตั้ง rate limit บน `/api/score`
 
 ## ทดลองในเครื่อง
 ```bash
