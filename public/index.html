@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#5B2D8E">
+  <title>ตรวจสอบผลสอบการจำลองสอบ TOEIC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="สำนักวิชาศึกษาศาสตร์ มหาวิทยาลัยวลัยลักษณ์">
+      <img src="assets/logo.png" alt="สำนักวิชาศึกษาศาสตร์ มหาวิทยาลัยวลัยลักษณ์" width="900" height="402">
+    </a>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">EDU-TOEIC สอบ TOEIC เสมือนจริง · ศึกษาศาสตร์ 1/2569</p>
+      <h1>ตรวจสอบผลสอบการจำลองสอบ TOEIC<br><span>เมื่อวันที่ 27 ต.ค.2569</span></h1>
+    </div>
+  </section>
+
+  <main>
+    <section class="card lookup" id="lookup">
+      <h2>กรอกรหัสนักศึกษาเพื่อดูคะแนนของคุณ</h2>
+      <p class="muted">คะแนนของแต่ละคนเป็นความลับ ระบบจะแสดงเฉพาะคะแนนของรหัสที่กรอกถูกต้องเท่านั้น</p>
+      <form id="form" novalidate autocomplete="off">
+        <label for="sid">รหัสนักศึกษา (8 หลัก)</label>
+        <div class="row">
+          <input id="sid" name="sid" inputmode="numeric" pattern="[0-9]*" maxlength="8" placeholder="เช่น 67xxxxxx" autocomplete="off" aria-describedby="msg">
+          <button id="go" type="submit">ตรวจสอบคะแนน</button>
+        </div>
+        <p id="msg" class="msg" role="alert" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section id="result" class="result" hidden aria-live="polite">
+      <div class="card who">
+        <div>
+          <p class="muted small">ผลการสอบของ</p>
+          <h2 id="r-name"></h2>
+          <p class="muted"><span id="r-id"></span> · <span id="r-major"></span></p>
+        </div>
+        <button type="button" class="ghost" id="clear">ตรวจสอบรหัสอื่น / ล้างหน้าจอ</button>
+      </div>
+
+      <div class="scores">
+        <article class="card score listening">
+          <h3>Listening <small>การฟัง</small></h3>
+          <div class="big" id="l-scaled"></div>
+          <div class="of">จาก 495 คะแนน</div>
+          <div class="bar"><i id="l-bar"></i></div>
+          <p class="raw">ตอบถูก <b id="l-raw"></b> / 100 ข้อ</p>
+        </article>
+        <article class="card score reading">
+          <h3>Reading <small>การอ่าน</small></h3>
+          <div class="big" id="r-scaled"></div>
+          <div class="of">จาก 495 คะแนน</div>
+          <div class="bar"><i id="r-bar"></i></div>
+          <p class="raw">ตอบถูก <b id="r-raw"></b> / 100 ข้อ</p>
+        </article>
+        <article class="card score total">
+          <h3>Total <small>คะแนนรวม</small></h3>
+          <div class="big" id="t-scaled"></div>
+          <div class="of">จาก 990 คะแนน</div>
+          <div class="bar"><i id="t-bar"></i></div>
+          <p class="raw">Listening + Reading</p>
+        </article>
+      </div>
+
+      <div class="card levels">
+        <h2>ความหมายของคะแนน <small>(อ้างอิง TOEIC Score Descriptors ของ ETS)</small></h2>
+        <div class="level-grid">
+          <div id="l-level"></div>
+          <div id="r-level"></div>
+        </div>
+      </div>
+
+      <p class="note">
+        * คะแนนเป็น <b>คะแนนประมาณการ</b> ที่แปลงจากร้อยละของข้อที่ตอบถูกตามตารางแปลงคะแนนของ ETS
+        (Estimate a TOEIC score from % correct on Practice Test) ไม่ใช่คะแนนสอบ TOEIC อย่างเป็นทางการ<br>
+        หน้าจอนี้จะถูกล้างอัตโนมัติใน <span id="count">2:00</span> นาที เพื่อความเป็นส่วนตัว
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>สำนักวิชาศึกษาศาสตร์ มหาวิทยาลัยวลัยลักษณ์ · ภาควิชาการสอนภาษาอังกฤษ</p>
+    <p class="small">TOEIC® is a registered trademark of ETS. Score descriptors © ETS.</p>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
