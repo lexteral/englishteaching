@@ -1,0 +1,8 @@
+name = "toeicresults"          # ต้องตรงกับชื่อ Worker ใน Cloudflare
+main = "src/worker.js"
+compatibility_date = "2025-01-01"
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+run_worker_first = ["/api/*"]  # เฉพาะ /api/* ผ่านโค้ด ส่วนหน้าเว็บเสิร์ฟเป็นไฟล์ static
